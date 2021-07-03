@@ -1,8 +1,8 @@
 package TPinterpreteur;
 
 public class ArgumentFonctionInvalideException extends Exception{
-  ArgumentFonctionInvalideException(String s)
+ ArgumentFonctionInvalideException(String s)
   {
-    super(s)
+        super(s);
   }
 }
