@@ -15,15 +15,6 @@ public class Expression {
 
         if (expression.equals("")) throw new Exception("Erreur : Expression manquante");
 
-        /*while (expression.contains("(")) {  //on remplace toutes les expressions entre parentheses par '$<nb>$'
-            String sousExp = analyseParenthese(expression);
-            sousExpressions.put(nb, sousExp.substring(1, sousExp.length() - 1));  // ajouter la sous expression à la liste
-
-            expression = expression.replace(sousExp, "$" + nb + "$");
-            nb++;
-            //System.out.println(expression);
-        }*/
-
         if (!expression.contains("+") && !expression.contains("-")) { //alors c'est un terme
             terme = new Terme(expression);
             eval = terme.analyseTerme();
