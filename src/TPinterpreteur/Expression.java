@@ -81,4 +81,8 @@ public class Expression {
     public double evaluer() throws Exception {
         return analyseExpression().evaluer();
     }
+    public void setExpression(String expression)
+    {
+        this.expression=expression;
+    }
 }
