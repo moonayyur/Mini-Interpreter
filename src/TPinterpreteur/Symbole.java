@@ -1,8 +1,8 @@
 package TPinterpreteur;
 public class Symbole{
-    private String nom;
+    protected String nom;
     //private int value;
-    Symbole(String nom, int value)
+    Symbole(String nom)
     {
         this.nom=nom;
         //this.value=value;
