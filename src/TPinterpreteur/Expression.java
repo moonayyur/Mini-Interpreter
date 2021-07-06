@@ -2,16 +2,16 @@ package TPinterpreteur;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
+import java.util.HashMap;
 import java.util.Map;
 
 public class Expression {
     private String expression;
-    private Evaluation terme1, terme2;
     private static int num;
-    private static Map<Integer,String> sousexpressions;
+    private static Map<Integer,String> sousexpressions = new HashMap<>();
 
-    public Expression(String expression) {
-        this.expression = expression;
+    public Expression(int num) {
+        this.expression = sousexpressions.get(num);
     }
 
     public Evaluation analyseExpression() throws Exception{ //analyse une expression et retourne son résultat
@@ -19,7 +19,7 @@ public class Expression {
         String[] parties;
         Terme terme;
 
-        if (expression.equals("")) throw new Exception("Erreur : Expression manquante");
+        if (expression.equals("")) throw new ExpressionErroneeException("Erreur : Expression manquante");
 
         while (expression.contains("(")){
             String sousExp = analyseParenthese(expression);
@@ -81,6 +81,7 @@ public class Expression {
     public double evaluer() throws Exception {
         return analyseExpression().evaluer();
     }
+
     public void setExpression(String expression)
     {
         this.expression=expression;

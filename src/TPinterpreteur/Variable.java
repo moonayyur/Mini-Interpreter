@@ -2,16 +2,10 @@ package TPinterpreteur;
 
 public class Variable extends Symbole implements Evaluation  {
     private double valeur;
-    public Variable(String nom,double valeur){
-        super(nom);
-        this.valeur = valeur;
-    }
+
     public Variable(String nom){
         super(nom);
-    }
-    public double getValue()
-    {
-        return valeur;
+        //chercher la valeur dans la table de symbole si la variable existe sinon exception
     }
 
     public double evaluer() {

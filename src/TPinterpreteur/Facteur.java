@@ -2,7 +2,6 @@ package TPinterpreteur;
 
 public class Facteur {
     private String facteur;
-    private Evaluation element1, element2;
 
     public Facteur(String facteur) {
         this.facteur = facteur;
@@ -13,7 +12,7 @@ public class Facteur {
         String[] parties;
         Element element;
 
-        if (facteur.equals("")) throw new Exception("Erreur : Expression erronée");
+        if (facteur.equals("")) throw new ExpressionErroneeException("Erreur : Expression erronée");
 
         if (!facteur.contains("^")) { //alors c'est un element
             element = new Element(facteur);
