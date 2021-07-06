@@ -8,6 +8,6 @@ public class Variable extends Symbole implements Evaluation {
     }
 
     public double evaluer() {
-        return 0;
+        return this.valeur;
     }
 }
