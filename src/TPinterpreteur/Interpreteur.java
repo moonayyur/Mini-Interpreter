@@ -43,14 +43,14 @@ public class Interpreteur {
         try{
             Commande commande=Interpreteur.trouverCommande();
             Class c = commande.getClass();
-            if (c.getName().equals("Let"))
+            if (c.getName().equals("Let"))// la commande est un let
             {
                 ((Let)commande).analyse();
                 //on analyse l'expression apres variable
                // ((Let)commande).ajouterVariable();
                ((Let)commande).affichageResultat();   
             }
-            else{
+            else{//la commande est un print
                 System.out.println("je suis un print");
             }
            
