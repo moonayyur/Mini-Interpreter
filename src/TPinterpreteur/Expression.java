@@ -1,8 +1,14 @@
 package TPinterpreteur;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.Map;
+
 public class Expression {
     private String expression;
     private Evaluation terme1, terme2;
+    private static int num;
+    private static Map<Integer,String> sousexpressions;
 
     public Expression(String expression) {
         this.expression = expression;
@@ -14,6 +20,13 @@ public class Expression {
         Terme terme;
 
         if (expression.equals("")) throw new Exception("Erreur : Expression manquante");
+
+        while (expression.contains("(")){
+            String sousExp = analyseParenthese(expression);
+            sousexpressions.put(num, sousExp.substring(1, sousExp.length() - 1));  //ajouter la sous expression à la map
+            expression = expression.replace(sousExp, "$" + num + "$");
+            num++;
+        }
 
         if (!expression.contains("+") && !expression.contains("-")) { //alors c'est un terme
             terme = new Terme(expression);
@@ -47,6 +60,22 @@ public class Expression {
             }
         }
         return eval;
+    }
+
+    private String analyseParenthese(String expression) throws ParentheseManquanteException { //retourne la sous expression entre parenthéses
+        int i, begin = i = expression.indexOf("("); //recuperer l'index du premier '('
+        Deque<Integer> pile = new ArrayDeque<>();
+        pile.add(begin);
+        try {
+            while (!pile.isEmpty()) { //parcourir la chaine
+                i++;
+                if (expression.charAt(i) == '(') pile.add(i); //empiler si on trouve '('
+                else if (expression.charAt(i) == ')') pile.removeLast(); //depiler si on trouve ')'
+            }
+            return expression.substring(begin, i + 1);
+        } catch (IndexOutOfBoundsException e) {
+            throw new ParentheseManquanteException("Erreur : Parenthèse fermante manquante");
+        }
     }
 
     public double evaluer() throws Exception {

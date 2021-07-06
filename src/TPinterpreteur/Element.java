@@ -13,15 +13,18 @@ public class Element {
         String[] parties;
 
         if (element.equals("")) throw new Exception("Erreur : Expression erronée");
-
+        else if (element.contains(")")) throw new ParentheseManquanteException("Erreur : Paranthèse ouvrante manquante");
         if (element.matches("\\d.,+")) { //alors c'est un nombre
             return new Nombre(Double.parseDouble(element));
         }
-        /*else if (element.substring(0,1).matches("[a-zA-Z]")){ //alors c'est une variable (+ N'EST PAS UNE FCT NI UNE CMD)
-            return new Variable(element);
+        else if (element.substring(0,1).matches("[a-zA-Z]") && !){ //alors c'est une variable
+            return new Variable(element,2);
         }
-        else if (){ //alors c'est une
-        }*/
+        else if () { //alors c'est une sous expression
+        }
+        else { //alors c'est une fonction ou xxxxxx
+
+        }
         return new Nombre(Double.parseDouble(element)); //just to ne7i l'erreur TEMPORAIRE
     }
 }

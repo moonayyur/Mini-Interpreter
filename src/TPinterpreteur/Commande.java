@@ -1,6 +1,6 @@
 package TPinterpreteur;
 
-public abstract class Commande 
+public abstract class Commande{
   protected String expression;// l'expression a traiter
     Commande(String expression)
     {
