@@ -7,7 +7,7 @@ public class Let extends Commande{
     {
         super(expression);
     }
-    public void analyse() throws NomVariableInvalideException {
+    public void analyse() throws NomVariableInvalideException,AffectationIncorrecteException {
         final String SEPARATEUR = "=";
         String parties[] = super.expression.split(SEPARATEUR);
         String variable=parties[0];
@@ -22,6 +22,10 @@ public class Let extends Commande{
         }
         else{
             throw new NomVariableInvalideException("le nom de la variable doit commencer par une lettre");
+        }
+        if(parties.length==1)
+        {
+            throw new AffectationIncorrecteException("La valeur a affecter est introuvable ");
         }
 
 
@@ -43,4 +47,3 @@ public class Let extends Commande{
 
    
 }
-
