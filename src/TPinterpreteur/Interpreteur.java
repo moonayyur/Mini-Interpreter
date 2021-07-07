@@ -3,16 +3,18 @@ package TPinterpreteur;
 import java.util.*;
 public class Interpreteur {
     private static String ligneDeCommande;
-    public static Set<String> motsReserves=new HashSet<String>();
+    private static Set<String> motsReserves=new HashSet<String>();
     private static String[] lireLigneDeCommande()
     {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Entrez vos commandes, tapez end pour terminer votre programe");
-        ligneDeCommande = sc.nextLine();
+        
         final String SEPARATEUR = " ";
         String parties[] = ligneDeCommande.split(SEPARATEUR);
         return parties;
        
+    }
+    public static boolean contenirVar(String variable)
+    {
+        return motsReserves.contains(variable);
     }
     static public Commande trouverCommande() throws CommandeInvalideException
     {
@@ -40,34 +42,41 @@ public class Interpreteur {
         motsReserves.add("log");
         motsReserves.add("print");
         motsReserves.add("let");
-        try{
-            Commande commande=Interpreteur.trouverCommande();
-            Class c = commande.getClass();
-            if (c.getName().equals("Let"))// la commande est un let
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Entrez vos commandes, tapez end pour terminer votre programe");
+        ligneDeCommande = sc.nextLine();
+        while(ligneDeCommande.equals("end")==false)
+        {
+            try{
+                Commande commande=Interpreteur.trouverCommande();
+                Class c = commande.getClass();
+                if (c.getName().equals("Let"))
+                {
+                    ((Let)commande).analyse();
+                    //on analyse l'expression apres variable
+                   // ((Let)commande).ajouterVariable();
+                   ((Let)commande).affichageResultat();   
+                }
+                else{
+                    System.out.println("je suis un print");
+                }
+               
+            }
+            catch (CommandeInvalideException e)
             {
-                ((Let)commande).analyse();
-                //on analyse l'expression apres variable
-               // ((Let)commande).ajouterVariable();
-               ((Let)commande).affichageResultat();   
+                System.out.println(e);
             }
-            else{//la commande est un print
-                System.out.println("je suis un print");
+            catch (NomVariableInvalideException e)
+            {
+                System.out.println(e);
             }
-           
-        }
-        catch (CommandeInvalideException e)
-        {
-            System.out.println(e);
-        }
-        catch (NomVariableInvalideException e)
-        {
-            System.out.println(e);
-        }
-        
-        
-    }
+            finally
+            {
+                ligneDeCommande = sc.nextLine();
 
-
-    
+            }
+        }
 }
+}
+
 
