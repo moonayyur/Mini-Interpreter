@@ -12,7 +12,7 @@ public class Let extends Commande{
         String parties[] = super.expression.split(SEPARATEUR);
         String variable=parties[0];
         char premiereLettre=variable.charAt(0);//verifier si la variable commence par une lettre
-        if(Interpreteur.motsReserves.contains(variable))
+        if(Interpreteur.contenirVar(variable))
         {
             throw new NomVariableInvalideException("le nom de la variable est un nom reserve");
         }
