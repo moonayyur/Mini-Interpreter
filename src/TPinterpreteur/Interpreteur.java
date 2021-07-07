@@ -70,6 +70,10 @@ public class Interpreteur {
             {
                 System.out.println(e);
             }
+            catch (AffectationIncorrecteException e)
+            { 
+                System.out.println(e);      
+            }
             finally
             {
                 ligneDeCommande = sc.nextLine();
@@ -78,6 +82,7 @@ public class Interpreteur {
         }
 }
 }
+
 
 
 
