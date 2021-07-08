@@ -1,7 +1,8 @@
 package TPinterpreteur;
 
 public class Somme implements Evaluation {
-    private Evaluation arg1,arg2;
+    private final Evaluation arg1;
+    private final Evaluation arg2;
     public Somme(Evaluation arg1, Evaluation arg2){
         this.arg1 = arg1;
         this.arg2 = arg2;

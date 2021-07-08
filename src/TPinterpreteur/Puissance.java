@@ -1,7 +1,8 @@
 package TPinterpreteur;
 
 public class Puissance implements Evaluation {
-    private Evaluation arg, puiss;
+    private final Evaluation arg;
+    private final Evaluation puiss;
     public Puissance(Evaluation arg, Evaluation puiss){
         this.arg = arg;
         this.puiss = puiss;

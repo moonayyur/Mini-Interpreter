@@ -1,11 +1,10 @@
 package TPinterpreteur;
 
 public class Terme {
-    private String terme;
+    private final String terme;
 
     public Terme(String terme) {
-        terme=terme.trim();
-        this.terme = terme;
+        this.terme = terme.trim();
     }
 
     public Evaluation analyseTerme() throws Exception{ //analyse un terme et retourne son résultat

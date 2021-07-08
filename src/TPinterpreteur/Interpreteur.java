@@ -1,62 +1,33 @@
 package TPinterpreteur;
 
-import java.util.*;
-
 public class Interpreteur {
-    private static String ligneDeCommande;
-    private static String[] lireLigneDeCommande()
+    private String ligneDeCommande;
+    public String[] lireLigneDeCommande()
     {
-
-        final String SEPARATEUR = " ";
-        String parties[] = ligneDeCommande.split(SEPARATEUR,2);
-        return parties;
-
+        return ligneDeCommande.split(" ",2);
     }
-    public static Commande trouverCommande() throws CommandeInvalideException
+    public Commande trouverCommande() throws CommandeInvalideException
     {
         Commande commande;
-        String ligneDeCommandeDepartage[]=lireLigneDeCommande();
+        String[] ligneDeCommandeDepartage =lireLigneDeCommande();
+        if(ligneDeCommandeDepartage.length==1) throw new CommandeInvalideException("Erreur : Commande incomplete");
         if (ligneDeCommandeDepartage[0].equals("print"))
-        {
             commande=new Print(ligneDeCommandeDepartage[1]);
-        }
+
         else if  (ligneDeCommandeDepartage[0].equals("let"))
-        {
             commande=new Let(ligneDeCommandeDepartage[1]);
-        }
-        else{
-            throw new CommandeInvalideException("commande inexistante");
-        }
+
+        else
+            throw new CommandeInvalideException("Erreur : Commande inexistante");
+
         return commande;
     }
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Entrez vos commandes, tapez end pour terminer votre programe");
-        ligneDeCommande = sc.nextLine();
-        ligneDeCommande=ligneDeCommande.trim();
-        while(ligneDeCommande.equals("end")==false)
-        {
-            try{
-                Commande commande=Interpreteur.trouverCommande();
-                commande.analyse();
-                commande.affichageResultat();
 
-            } catch (CommandeInvalideException e)
-            {
-                System.out.println(e.getMessage());
+    public void setLigneDeCommande(String ligneDeCommande) {
+        this.ligneDeCommande = ligneDeCommande.trim();
+    }
 
-            } catch (NomVariableInvalideException e)
-            {
-                System.out.println(e.getMessage());
-
-            } catch (Exception e) {
-
-                System.out.println(e.getMessage());
-            } finally
-            {
-                ligneDeCommande = sc.nextLine();
-                ligneDeCommande=ligneDeCommande.trim();
-            }
-        }
+    public boolean getLigneDeCommande(String str) {
+        return ligneDeCommande.equals(str);
     }
 }

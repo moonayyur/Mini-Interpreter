@@ -1,5 +1,5 @@
 package TPinterpreteur;
 
 public interface Evaluation {
-  public double evaluer()throws Exception;
+  double evaluer()throws Exception;
 }

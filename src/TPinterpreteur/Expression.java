@@ -9,9 +9,7 @@ public class Expression {
     private final static Map<Integer,String> sousexpressions = new HashMap<>();
 
     public Expression(String expression) {
-
-        expression=expression.trim();
-        this.expression = expression;
+        this.expression = expression.trim();
     }
 
     public Expression(int num) {

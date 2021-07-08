@@ -1,8 +1,8 @@
 package TPinterpreteur;
 
 public class Fonction extends Symbole implements Evaluation {
-    private Fonction_Standard type;
-    private Evaluation contenu;
+    private final Fonction_Standard type;
+    private final Evaluation contenu;
     public Fonction(String nom,Evaluation contenu) throws ExpressionErroneeException{
         super(nom);
         if (!Fonction_Standard.contains(nom)) throw new ExpressionErroneeException("Erreur : Nom de fonction invalide");

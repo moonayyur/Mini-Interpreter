@@ -1,11 +1,10 @@
 package TPinterpreteur;
 
 public class Facteur {
-    private String facteur;
+    private final String facteur;
 
     public Facteur(String facteur) {
-        facteur=facteur.trim();
-        this.facteur = facteur;
+        this.facteur = facteur.trim();
     }
 
     public Evaluation analyseFacteur() throws Exception{ //analyse un facteur et retourne son résultat

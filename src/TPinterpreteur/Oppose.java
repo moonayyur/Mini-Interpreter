@@ -1,7 +1,7 @@
 package TPinterpreteur;
 
 public class Oppose implements Evaluation {
-    private Evaluation ev;
+    private final Evaluation ev;
     public Oppose (Evaluation ev){
         this.ev = ev;
     }

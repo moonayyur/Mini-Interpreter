@@ -2,10 +2,8 @@ package TPinterpreteur;
 
 public class Symbole implements Comparable<Symbole>{
     private String nom;
-    Symbole(String nom)
-    {
-        nom=nom.trim();
-        this.nom=nom;
+    Symbole(String nom){
+        this.nom=nom.trim();
     }
     Symbole(){}
     public int hashCode()
@@ -16,8 +14,7 @@ public class Symbole implements Comparable<Symbole>{
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Symbole)) return false;
-        Symbole symbole = (Symbole) o;
+        if (!(o instanceof Symbole symbole)) return false;
         return getNom().equals(symbole.getNom());
     }
 

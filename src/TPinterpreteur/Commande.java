@@ -1,7 +1,7 @@
 package TPinterpreteur;
 
 public abstract class Commande {
-  private String expression;// l'expression a traiter
+  private final String expression;// l'expression a traiter
 
 
   Commande(String expression)

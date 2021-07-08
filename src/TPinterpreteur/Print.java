@@ -2,7 +2,7 @@ package TPinterpreteur;
 
 public class Print extends Commande{
 
-    private Expression expression;
+    private final Expression expression;
 
     Print(String expression)
     {
