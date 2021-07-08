@@ -4,6 +4,7 @@ public class Terme {
     private String terme;
 
     public Terme(String terme) {
+        terme=terme.trim();
         this.terme = terme;
     }
 
@@ -27,10 +28,13 @@ public class Terme {
                 if (prod) {
                     prod = !parties[1].contains("/") && parties[1].contains("*") || parties[1].contains("/") && parties[1].contains("*") && parties[1].indexOf("*") < parties[1].indexOf("/");
                     parties = parties[1].split("[/*]", 2);
+                    facteur = new Facteur(parties[0]);
                     eval = new Produit(eval, facteur.analyseFacteur());
                 } else { //quotient
                     prod = !parties[1].contains("/") && parties[1].contains("*") || parties[1].contains("/") && parties[1].contains("*") && parties[1].indexOf("*") < parties[1].indexOf("/");
                     parties = parties[1].split("[/*]", 2);
+                    facteur = new Facteur(parties[0]);
+
                     eval = new Quotient(eval, facteur.analyseFacteur());
                 }
             }

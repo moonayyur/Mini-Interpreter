@@ -6,7 +6,7 @@ public class Oppose implements Evaluation {
         this.ev = ev;
     }
     @Override
-    public double evaluer() {
+    public double evaluer() throws Exception{
         return -ev.evaluer();
     }
 }

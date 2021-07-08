@@ -4,6 +4,7 @@ public class Facteur {
     private String facteur;
 
     public Facteur(String facteur) {
+        facteur=facteur.trim();
         this.facteur = facteur;
     }
 
@@ -24,6 +25,7 @@ public class Facteur {
             eval = element.analyseElement();
             while (parties.length != 1) { //parcours des parties du facteur
                     parties = parties[1].split("[\\^]", 2);
+                    element = new Element(parties[0]);
                     eval = new Puissance(eval, element.analyseElement());
             }
         }

@@ -11,4 +11,13 @@ public enum Fonction_Standard {
         }
         return false;
     }
+    public static Fonction_Standard getType(String nom){
+        for (Fonction_Standard f : Fonction_Standard.values()) {
+            if (f.name().equals(nom)) {
+                return f;
+            }
+        }
+        return sin;
+    }
+
 }

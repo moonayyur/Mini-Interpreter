@@ -7,7 +7,7 @@ public class Somme implements Evaluation {
         this.arg2 = arg2;
     }
     @Override
-    public double evaluer() {
+    public double evaluer() throws Exception{
         return arg1.evaluer() + arg2.evaluer();
     }
 }

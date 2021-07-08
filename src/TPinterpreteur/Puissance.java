@@ -7,7 +7,7 @@ public class Puissance implements Evaluation {
         this.puiss = puiss;
     }
     @Override
-    public double evaluer() {
+    public double evaluer() throws Exception{
         return Math.pow(arg.evaluer(), puiss.evaluer());
     }
 }

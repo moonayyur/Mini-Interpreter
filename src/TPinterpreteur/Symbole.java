@@ -1,32 +1,37 @@
 package TPinterpreteur;
-public class Symbole{
-    protected String nom;
-    //private int value;
+
+public class Symbole implements Comparable<Symbole>{
+    private String nom;
     Symbole(String nom)
     {
+        nom=nom.trim();
         this.nom=nom;
-        //this.value=value;
     }
     Symbole(){}
     public int hashCode()
     {
         return nom.hashCode();
     }
-    public boolean equals(Symbole symbole)
-    {
-        return nom.equals(symbole.getNom());
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Symbole)) return false;
+        Symbole symbole = (Symbole) o;
+        return getNom().equals(symbole.getNom());
     }
+
     public String getNom()
     {
         return nom;
     }
-    /* public int getValue()
-    {
-        return value;
-    }*/
     public String toString()
     {
         return nom;
     }
-    
+
+    @Override
+    public int compareTo(Symbole o) {
+        return nom.compareTo(o.nom);
+    }
 }
